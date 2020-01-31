@@ -1,4 +1,9 @@
-# React+Redux page with
+# Collection of small apps on React+Redux page 
+
+
+### [View the demo](https://frontendreact.netlify.com/)
+
+## List of included apps
 
 + TodoList app
 + Weather app
@@ -7,11 +12,16 @@
 + Calculator app
 + Social Card (not done yet)
 
-### Built with:
-<p>nodejs : v11.9.0 <br>
-react: v16.10.2</p>
+## Installation
+```bash
+git clone https://github.com/LavrL/frontend-react.git
+cd frontend-react
+npm i
 
-### Used:
+npm run start
+```
+
+## Used:
 React Router
 Redux
 
