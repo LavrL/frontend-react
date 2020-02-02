@@ -8,7 +8,7 @@ const initiateState = {
     main: '',
     city: 'Riga',
     cityToShow: '',
-    countryToShow:'',
+    countryToShow: '',
     country: 'LV',
     showWeather: false,
     showError: false
@@ -22,16 +22,10 @@ class Weather extends Component {
 
     onChange = (e) => {
         e.preventDefault();
-        if (e.target.name === "city") {
-            this.setState({
-                city: e.target.value
-            })
-        }
-        if (e.target.name === "country") {
-            this.setState({
-                country: e.target.value
-            })
-        }
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+        console.log('[e.target.name] = ', e.target.name);
     }
     getWeather = (e) => {
         e.preventDefault();
@@ -39,7 +33,7 @@ class Weather extends Component {
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.city},${this.state.country}&units=metric&appid=${process.env.REACT_APP_WEATHER_APPID}`)
             .then((res) => { return res.json() })
             .then((result) => {
-                //console.log(result.weather[0].main);
+                console.log('this.state.showWeather - ', this.state.showWeather);
                 if (!this.state.showWeather) {
                     this.setState({
                         showWeather: !this.state.showWeather
@@ -88,7 +82,7 @@ class Weather extends Component {
                         </h2>
                     </div>
                     <div>
-                        <h3><p>Temperature</p> 
+                        <h3><p>Temperature</p>
                             <span className="weather__forecast_number">{this.state.temp}</span>
                         </h3>
                     </div>
@@ -98,8 +92,8 @@ class Weather extends Component {
                             <span className="weather__forecast_number">{this.state.minTemp}</span>
                         </h3>
                         <h3>
-                           <p>Max. temp</p>
-                           <span className="weather__forecast_number">{this.state.maxTemp}</span>
+                            <p>Max. temp</p>
+                            <span className="weather__forecast_number">{this.state.maxTemp}</span>
                         </h3>
                     </div>
                     <div> <h3>
@@ -107,10 +101,9 @@ class Weather extends Component {
                     </div> </React.Fragment>}
                     {this.state.showError && <div className="weather-error">Incorrect City or Country</div>}
                 </div>
-
             </div>
         )
     }
-
 }
+
 export default Weather;
