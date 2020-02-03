@@ -14,7 +14,6 @@ const TodoList = (props) => {
             </li>
         )
     });
-
     return (<ul className="todo-list">{elements}</ul>)
 }
 

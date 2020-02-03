@@ -24,7 +24,6 @@
 }
 
 .todo-item .labelShow {
-    /* display: none; */
     margin-right: auto;
 }
 
@@ -41,9 +40,9 @@
     margin-right: auto;
 }
 
-.todo-item.editing .textfield {
+/* .todo-item.editing .textfield {
     display: block;
-}
+} */
 
 .todo-item button {
     opacity: 1;

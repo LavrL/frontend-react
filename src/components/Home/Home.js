@@ -69,7 +69,7 @@ const Home = () => {
                             <div className="menuBar__options">
                                 <div className="menuBar__options-content">
                                     <p><Link className="menuBar__options-content-link-first" to="/home">Home</Link></p>
-                                    <p><Link className="menuBar__options-content-link" to="/properties">ToDoList</Link></p>
+                                    <p><Link className="menuBar__options-content-link" to="/properties">Addresses List</Link></p>
                                     <p><Link className="menuBar__options-content-link" to="/weather">Weather</Link></p>
                                     <p><Link className="menuBar__options-content-link" to="/properties">Movie</Link></p>
                                     <p><Link className="menuBar__options-content-link" to="/currencyConverter">Currency Converter</Link></p>

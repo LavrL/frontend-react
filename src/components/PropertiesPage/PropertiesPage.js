@@ -17,14 +17,14 @@ class PropertiesPage extends Component {
             items: [
                 {
                     id: 1,
-                    label: '123',
+                    label: 'Brīvības 132',
                     editBtnName: 'EDIT',
                     inputClassName: 'textFieldHide',
                     labelClassName: 'labelShow'
                 },
                 {
                     id: 2,
-                    label: '456',
+                    label: 'Matīsa 74',
                     editBtnName: 'EDIT',
                     inputClassName: 'textFieldHide',
                     labelClassName: 'labelShow'
@@ -50,13 +50,7 @@ class PropertiesPage extends Component {
         }
     }
 
-    onChange = (e, label) => {
-        e.preventDefault();
-        return e.target.value + label
-    }
-
     editItem = (index) => {
-        console.log('index = ', index);
         this.setState((state) => {
             const items = state.items.map((item) => {
                 if ((item.id === index) && (item.editBtnName === 'EDIT')) {
@@ -67,8 +61,6 @@ class PropertiesPage extends Component {
                     if (state.returnedValue) {
                         item.label = this.state.returnedValue;
                     }
-                    
-                    console.log('item.label ', item.label);
                     item.inputClassName = "textFieldHide"
                     item.editBtnName = 'EDIT';
                     item.labelClassName = "labelShow"
@@ -76,7 +68,7 @@ class PropertiesPage extends Component {
                 return item;
             });
             return items
-        }, () => console.log('ok'));
+        });
     }
 
     deleteItem = (index) => {
@@ -88,13 +80,11 @@ class PropertiesPage extends Component {
         });
     }
 
-    // componentDidUpdate(prevProps, prevState) {
+
     prCB = (value) => {
-        console.log('value = ', value);
         this.setState({
             returnedValue: value
-        }, () => console.log('returnedValue', this.state.returnedValue))
-
+        })
     }
 
     render() {
