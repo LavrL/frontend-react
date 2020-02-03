@@ -1,6 +1,6 @@
+import Button from './Button/Button';
 import React, { Component } from 'react';
 import './Calculator.css';
-import Button from './Button/Button';
 
 const initiateState = {
     result: '0'

@@ -5,7 +5,7 @@
 
 ## List of included apps
 
-+ TodoList app
++ Addresses List app
 + Weather app
 + Movie (not done yet)
 + Currency Converter app

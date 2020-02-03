@@ -23,12 +23,22 @@
     margin-right: auto;
 }
 
-.todo-item.editing .title {
+.todo-item .labelShow {
+    /* display: none; */
+    margin-right: auto;
+}
+
+.todo-item .labelHide {
     display: none;
 }
 
-.todo-item .textfield {
+.todo-item .textFieldHide {
     display: none;
+}
+
+.todo-item .textFieldShow {
+    display: block;
+    margin-right: auto;
 }
 
 .todo-item.editing .textfield {

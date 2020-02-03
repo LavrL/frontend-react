@@ -1,23 +1,41 @@
-import React, { Component } from 'react';
-import './PropertiesPage.css';
 import AppHeader from './AppHeader/AppHeader';
 import ItemAddForm from './ItemAddForm/ItemAddForm';
+import React, { Component } from 'react';
 import TodoList from './TodoList/TodoList';
+import './PropertiesPage.css';
 
 class PropertiesPage extends Component {
 
-    genId = 50;
+    constructor(props) {
+        super(props);
+        this.genId = 50;
 
-    state = {
-        items: [
-            { id: 1, label: 'Turgeneva 212' },
-            { id: 2, label: 'Merkela 55' },
-            { id: 3, label: 'Lacplesa 42' }]
+        this.prCB = this.prCB.bind(this);
+
+        this.state = {
+            returnedValue: '',
+            items: [
+                {
+                    id: 1,
+                    label: '123',
+                    editBtnName: 'EDIT',
+                    inputClassName: 'textFieldHide',
+                    labelClassName: 'labelShow'
+                },
+                {
+                    id: 2,
+                    label: '456',
+                    editBtnName: 'EDIT',
+                    inputClassName: 'textFieldHide',
+                    labelClassName: 'labelShow'
+                }]
+        }
     }
 
     onItemAdded = (label) => {
         this.setState((state) => {
             const item = this.createItem(label);
+            console.log(item);
             return { items: [...state.items, item] }
         })
     }
@@ -25,8 +43,40 @@ class PropertiesPage extends Component {
     createItem = (label) => {
         return {
             id: this.genId++,
-            label: label
+            label: label,
+            editBtnName: 'EDIT',
+            inputClassName: 'textFieldHide',
+            labelClassName: 'labelShow'
         }
+    }
+
+    onChange = (e, label) => {
+        e.preventDefault();
+        return e.target.value + label
+    }
+
+    editItem = (index) => {
+        console.log('index = ', index);
+        this.setState((state) => {
+            const items = state.items.map((item) => {
+                if ((item.id === index) && (item.editBtnName === 'EDIT')) {
+                    item.inputClassName = "textFieldShow";
+                    item.editBtnName = 'SAVE';
+                    item.labelClassName = "labelHide"
+                } else if ((item.id === index) && (item.editBtnName === 'SAVE')) {
+                    if (state.returnedValue) {
+                        item.label = this.state.returnedValue;
+                    }
+                    
+                    console.log('item.label ', item.label);
+                    item.inputClassName = "textFieldHide"
+                    item.editBtnName = 'EDIT';
+                    item.labelClassName = "labelShow"
+                }
+                return item;
+            });
+            return items
+        }, () => console.log('ok'));
     }
 
     deleteItem = (index) => {
@@ -38,6 +88,15 @@ class PropertiesPage extends Component {
         });
     }
 
+    // componentDidUpdate(prevProps, prevState) {
+    prCB = (value) => {
+        console.log('value = ', value);
+        this.setState({
+            returnedValue: value
+        }, () => console.log('returnedValue', this.state.returnedValue))
+
+    }
+
     render() {
         const { items } = this.state;
 
@@ -45,7 +104,10 @@ class PropertiesPage extends Component {
             <div className="App">
                 <AppHeader />
                 <ItemAddForm onItemAdded={this.onItemAdded} />
-                <TodoList items={items} onDelete={this.deleteItem} />
+                <TodoList items={items}
+                    onDelete={this.deleteItem}
+                    onEdit={this.editItem}
+                    prCB={this.prCB} />
             </div>
         )
     }
