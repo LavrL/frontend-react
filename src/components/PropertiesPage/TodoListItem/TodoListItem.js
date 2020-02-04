@@ -1,5 +1,6 @@
-import './TodoListItem.css';
+import PropTypes from 'prop-types';
 import React from 'react';
+import './TodoListItem.css';
 
 class TodoListItem extends React.Component {
     constructor(props) {
@@ -32,6 +33,16 @@ class TodoListItem extends React.Component {
             </React.Fragment>
         )
     }
+}
+
+TodoListItem.propTypes = {
+    label: PropTypes.string,
+    inputClassName: PropTypes.string,
+    value: PropTypes.string,
+    editBtnName: PropTypes.string,
+    onChange: PropTypes.func,
+    onDelete: PropTypes.func,
+    onEdit: PropTypes.func
 }
 
 export default TodoListItem;

@@ -7,7 +7,7 @@
 
 + Addresses List app
 + Weather app
-+ Movie (not done yet)
++ Movies Search app
 + Currency Converter app
 + Calculator app
 + Social Card (not done yet)

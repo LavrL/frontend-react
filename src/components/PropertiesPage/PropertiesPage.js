@@ -5,37 +5,35 @@ import TodoList from './TodoList/TodoList';
 import './PropertiesPage.css';
 
 class PropertiesPage extends Component {
-
     constructor(props) {
         super(props);
+
         this.genId = 50;
-
         this.prCB = this.prCB.bind(this);
-
         this.state = {
-            returnedValue: '',
-            items: [
-                {
-                    id: 1,
-                    label: 'Brīvības 132',
-                    editBtnName: 'EDIT',
-                    inputClassName: 'textFieldHide',
-                    labelClassName: 'labelShow'
-                },
-                {
-                    id: 2,
-                    label: 'Matīsa 74',
-                    editBtnName: 'EDIT',
-                    inputClassName: 'textFieldHide',
-                    labelClassName: 'labelShow'
-                }]
+        returnedValue: '',
+        items: [
+            {
+                id: 1,
+                label: 'Brīvības 132',
+                editBtnName: 'EDIT',
+                inputClassName: 'textFieldHide',
+                labelClassName: 'labelShow'
+            },
+            {
+                id: 2,
+                label: 'Matīsa 74',
+                editBtnName: 'EDIT',
+                inputClassName: 'textFieldHide',
+                labelClassName: 'labelShow'
+            }]
         }
     }
 
     onItemAdded = (label) => {
         this.setState((state) => {
             const item = this.createItem(label);
-            console.log(item);
+            // console.log(item);
             return { items: [...state.items, item] }
         })
     }

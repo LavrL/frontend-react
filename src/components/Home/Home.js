@@ -2,15 +2,16 @@ import React from 'react';
 import { HashRouter as Router, Link, Switch, Route } from 'react-router-dom';
 import './Home.css';
 import ProfilePage from '../ProfilePage/ProfilePage';
-import PropertiesPage from '../PropertiesPage/PropertiesPage';
+// import PropertiesPage from '../PropertiesPage/PropertiesPage';
 import CurrencyConverter from '../CurrencyConverter/CurrencyConverter';
 import Weather from '../Weather/Weather';
 import Calculator from '../Calculator/Calculator';
+import Movies from '../Movies/Movies';
 
 const routes = [
     {
         path: "/properties",
-        main: PropertiesPage
+        main: Movies
     },
     {
         path: "/profile",

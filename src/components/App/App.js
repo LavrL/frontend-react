@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Route, Router, Switch, Redirect } from 'react-router-dom';
-import './App.css';
 import Home from "../Home/Home";
 import { createBrowserHistory } from 'history';
+import './App.css';
+
 export const history = createBrowserHistory();
 
 class App extends Component {

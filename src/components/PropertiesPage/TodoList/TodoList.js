@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import TodoListItem from '../TodoListItem/TodoListItem';
 import './TodoList.css';
@@ -15,6 +16,12 @@ const TodoList = (props) => {
         )
     });
     return (<ul className="todo-list">{elements}</ul>)
+}
+
+TodoList.propTypes = {
+    prCB: PropTypes.func,
+    onDelete: PropTypes.func,
+    onEdit: PropTypes.func
 }
 
 export default TodoList;
