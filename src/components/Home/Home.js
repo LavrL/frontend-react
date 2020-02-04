@@ -1,16 +1,20 @@
+import Calculator from '../Calculator/Calculator';
+import CurrencyConverter from '../CurrencyConverter/CurrencyConverter';
+import Movies from '../Movies/Movies';
+import ProfilePage from '../ProfilePage/ProfilePage';
+import PropertiesPage from '../PropertiesPage/PropertiesPage';
 import React from 'react';
+import Weather from '../Weather/Weather';
 import { HashRouter as Router, Link, Switch, Route } from 'react-router-dom';
 import './Home.css';
-import ProfilePage from '../ProfilePage/ProfilePage';
-// import PropertiesPage from '../PropertiesPage/PropertiesPage';
-import CurrencyConverter from '../CurrencyConverter/CurrencyConverter';
-import Weather from '../Weather/Weather';
-import Calculator from '../Calculator/Calculator';
-import Movies from '../Movies/Movies';
 
 const routes = [
     {
         path: "/properties",
+        main: PropertiesPage
+    },
+    {
+        path: "/movies",
         main: Movies
     },
     {
@@ -31,27 +35,18 @@ const routes = [
     },
     {
         path: "/",
-        main: () => homepage()
+        main: () => Homepage()
     },
-    
+
 ]
 
-function homepage() {
+const Homepage = () => {
     return (
         <React.Fragment>
             <h2>Welcome to home page</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Porro, voluptate aliquam. Laborum vero, asperiores alias
-                iure odio expedita cupiditate reiciendis nobis aliquam dolor,
-                ex dolorem ipsa sit iste nihil deleniti? Esse distinctio in,
-                ratione magni beatae quam perspiciatis? Libero tenetur eaque
-                rem sequi voluptas repudiandae nobis? Voluptas neque quis
-                repudiandae error nam est illo harum voluptatem veritatis quos enim,
-                eveniet distinctio dolorum voluptatibus mollitia hic exercitationem
-                beatae dignissimos. Libero doloremque laboriosam minima ut aut numquam,
-                at quas possimus! Asperiores quasi nobis adipisci dignissimos
-                exercitationem nulla eligendi nemo aliquam sed architecto, esse quia
-                iusto cumque explicabo sapiente. Rem cupiditate quasi eveniet.</p>
+            <p>Here you can find collection of small apps written on React, Redux, using React Hooks
+                and bundled with Webpack.</p>
+            <p>Hope you enjoy it!</p>
         </React.Fragment>
     )
 }
@@ -72,7 +67,7 @@ const Home = () => {
                                     <p><Link className="menuBar__options-content-link-first" to="/home">Home</Link></p>
                                     <p><Link className="menuBar__options-content-link" to="/properties">Addresses List</Link></p>
                                     <p><Link className="menuBar__options-content-link" to="/weather">Weather</Link></p>
-                                    <p><Link className="menuBar__options-content-link" to="/properties">Movie</Link></p>
+                                    <p><Link className="menuBar__options-content-link" to="/movies">Movie</Link></p>
                                     <p><Link className="menuBar__options-content-link" to="/currencyConverter">Currency Converter</Link></p>
                                     <p><Link className="menuBar__options-content-link" to="/calculator">Calculator</Link></p>
                                     <p><Link className="menuBar__options-content-link" to="/profile">Social Card</Link></p>
