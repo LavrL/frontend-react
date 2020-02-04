@@ -31,6 +31,7 @@ class ItemAddForm extends Component {
                         type="text"
                         value={this.state.label}
                         onChange={this.onLabelChange} />
+                        {/* onKeyDown = {this.keyDown} */}
 
                     <button id="add-button"
                         type="button" onClick={this.onSubmit}>Add</button>

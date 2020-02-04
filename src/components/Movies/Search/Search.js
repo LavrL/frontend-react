@@ -17,7 +17,7 @@ const Search = ({ search }) => {
         resetInputField();
     }
     return (
-        <form className="search">
+        <div className="search">
             <input
                 value={searchValue}
                 onChange={handleSearchInputChanges}
@@ -27,7 +27,7 @@ const Search = ({ search }) => {
             <input onClick={callSearchFunction}
                 type="submit"
                 value="SEARCH" />
-        </form>
+        </div>
     )
 }
 export default Search;
