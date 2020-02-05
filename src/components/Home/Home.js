@@ -1,5 +1,6 @@
 import Calculator from '../Calculator/Calculator';
 import CurrencyConverter from '../CurrencyConverter/CurrencyConverter';
+import Homepage from './HomePage';
 import Movies from '../Movies/Movies';
 import ProfilePage from '../ProfilePage/ProfilePage';
 import PropertiesPage from '../PropertiesPage/PropertiesPage';
@@ -35,21 +36,10 @@ const routes = [
     },
     {
         path: "/",
-        main: () => Homepage()
+        main: Homepage
     },
 
 ]
-
-const Homepage = () => {
-    return (
-        <React.Fragment>
-            <h2>Welcome to home page</h2>
-            <p>Here you can find collection of small apps written on React, Redux, using React Hooks
-                and bundled with Webpack.</p>
-            <p>Hope you enjoy it!</p>
-        </React.Fragment>
-    )
-}
 
 const Home = () => {
     return (

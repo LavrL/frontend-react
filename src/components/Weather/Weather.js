@@ -25,15 +25,15 @@ class Weather extends Component {
         this.setState({
             [e.target.name]: e.target.value
         });
-        console.log('[e.target.name] = ', e.target.name);
+        // console.log('[e.target.name] = ', e.target.name);
     }
     getWeather = (e) => {
         e.preventDefault();
-        console.log('Getting weather ...');
+        // console.log('Getting weather ...');
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.city},${this.state.country}&units=metric&appid=${process.env.REACT_APP_WEATHER_APPID}`)
             .then((res) => { return res.json() })
             .then((result) => {
-                console.log('this.state.showWeather - ', this.state.showWeather);
+                // console.log('this.state.showWeather - ', this.state.showWeather);
                 if (!this.state.showWeather) {
                     this.setState({
                         showWeather: !this.state.showWeather
