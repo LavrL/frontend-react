@@ -14,9 +14,9 @@
     "react-scripts": "3.2.0"
   },
   "scripts": {
-    "start": "webpack-dev-server --mode development --open --hot --history-api-fallback",
+    "start": "webpack-dev-server --mode development --open --hot ",
     "build": "webpack --mode production",
-    "watch": "webpack-dev-server --mode development --hot --colors --history-api-fallback",
+    "watch": "webpack-dev-server --mode development --hot --colors ",
     "tests": "react-scripts test",
     "test": "jest",
     "clear_jest": "jest --clearCache",

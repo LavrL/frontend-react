@@ -70,7 +70,7 @@ const Home = () => {
                     <div className="column-right__profile">
                         <div className="column-right__content">
                             <div className="input-form__profile">
-                                <form className="input-form__profile">
+                                <div className="input-form__profile">
                                     <Switch>
                                         {routes.map((route, index) => (
                                             <Route key={index}
@@ -79,7 +79,7 @@ const Home = () => {
                                             />
                                         ))}
                                     </Switch>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
