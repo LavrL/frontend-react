@@ -6,7 +6,7 @@ import ProfilePage from '../ProfilePage/ProfilePage';
 import PropertiesPage from '../PropertiesPage/PropertiesPage';
 import React from 'react';
 import Weather from '../Weather/Weather';
-import { HashRouter as Router, Link, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom';
 import './Home.css';
 
 const routes = [
