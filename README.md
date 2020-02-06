@@ -1,7 +1,7 @@
 # Collection of small apps on React+Redux page 
 
 
-### [View the demo](https://frontendreact.netlify.com/)
+### [View the demo](https://frontend-reactjs.netlify.com/)
 
 ## List of included apps
 
@@ -22,8 +22,10 @@ npm run start
 ```
 
 ## Used:
-React Router
-Redux
++ React Router
++ React Hooks
++ Redux
++ Webpack
 
 ### Demo
 https://frontendreact.netlify.com/home

@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 import './ItemAddForm.css';
 
 class ItemAddForm extends Component {
-    state = {
-        label: ''
-    };
+    constructor(props) {
+        super(props);
+        this.keyDown = this.keyDown.bind(this);
+        this.state = {
+            label: ''
+        };
+    }
 
     onLabelChange = (e) => {
         this.setState({
@@ -20,7 +24,13 @@ class ItemAddForm extends Component {
             this.props.onItemAdded(label);
         }
     }
-    
+
+    keyDown(e) {
+        if (e.keyCode === 13) {
+            this.onSubmit(e);
+        }
+    }
+
     render() {
         return (
             <div>
@@ -30,9 +40,11 @@ class ItemAddForm extends Component {
                     <input id="add-input"
                         type="text"
                         value={this.state.label}
-                        onChange={this.onLabelChange} />
+                        onChange={this.onLabelChange}
+                        onKeyDown={this.keyDown}
+                    />
                     <button id="add-button"
-                        type="submit" 
+                        type="submit"
                         onClick={this.onSubmit}>Add</button>
                 </div>
             </div>
