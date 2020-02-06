@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {REACT_APP_WEATHER_APPID} from '../../utils/constants';
+
 import './Weather.css';
 
 const initiateState = {
@@ -30,7 +32,7 @@ class Weather extends Component {
     getWeather = (e) => {
         e.preventDefault();
         // console.log('Getting weather ...');
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.city},${this.state.country}&units=metric&appid=${process.env.REACT_APP_WEATHER_APPID}`)
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.city},${this.state.country}&units=metric&appid=${REACT_APP_WEATHER_APPID}`)
             .then((res) => { return res.json() })
             .then((result) => {
                 // console.log('this.state.showWeather - ', this.state.showWeather);

@@ -26,6 +26,3 @@ npm run start
 + React Hooks
 + Redux
 + Webpack
-
-### Demo
-https://frontendreact.netlify.com/home
