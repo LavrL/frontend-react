@@ -27,7 +27,6 @@ class Weather extends Component {
         this.setState({
             [e.target.name]: e.target.value
         });
-        // console.log('[e.target.name] = ', e.target.name);
     }
     getWeather = (e) => {
         e.preventDefault();

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Router, Switch, Redirect } from 'react-router-dom';
 import Home from "../Home/Home";
-// import { ConnectedRouter } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 import './App.css';
 
