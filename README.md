@@ -1,4 +1,4 @@
-# Collection of small apps on React+Redux page 
+# Collection of small apps on React + Redux page 
 
 
 ### [View the demo](https://frontend-reactjs.netlify.com/)

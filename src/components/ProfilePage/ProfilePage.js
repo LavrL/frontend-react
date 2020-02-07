@@ -34,10 +34,7 @@ const ProfilePage = () => {
                     required
                     readOnly />
             </label>
-            <div className="input-form__field_profile">
-                <button className="input-form__button input-form__button_orange-profile"
-                    type="button">Save</button>
-            </div>
+            
         </div>
     )
 }

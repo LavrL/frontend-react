@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {REACT_APP_WEATHER_APPID} from '../../utils/constants';
+import { REACT_APP_WEATHER_APPID } from '../../utils/constants';
 
 import './Weather.css';
 

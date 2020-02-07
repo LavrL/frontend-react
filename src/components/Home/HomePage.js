@@ -5,8 +5,12 @@ class Homepage extends React.Component {
         return (
             <React.Fragment>
                 <h2>Welcome to home page</h2>
-                <p>Here you can find collection of small apps written on React, Redux, using React Hooks
-                and bundled with Webpack.</p>
+                <p>Here you can find collection of small apps written on React, using </p>
+                <ul>
+                    <li>Redux</li>
+                    <li>React Hooks</li>    
+                </ul>
+                and bundled with Webpack.
                 <p>Hope you enjoy it!</p>
             </React.Fragment>
         )

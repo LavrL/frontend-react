@@ -4,20 +4,6 @@
   margin: 0;
 }
 
-.Movies::after {
-  content: "";
-  background-image: url('./img/avengers-movie.jpg');
-  background-repeat: no-repeat repeat;
-  background-size: cover;
-  opacity: 0.4;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: fixed;
-  z-index: -1;
-}
-
 .Movies-header {
   background-color: #282c34;
   height: 70px;
