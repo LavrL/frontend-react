@@ -1,4 +1,4 @@
-const reducerCalc = (
+const reducerCalcCurr = (
     state = {
         currencyBase: 'USD',
         currencyTo: 'GBP',
@@ -42,4 +42,4 @@ const reducerCalc = (
             return state;
     }
 }
-export default reducerCalc;
+export default reducerCalcCurr;

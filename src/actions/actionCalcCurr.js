@@ -1,5 +1,5 @@
-import { CURRENCY_CONVERTER_URL_API } from "./actionTypes";
 import store from '../redux/store';
+import { CURRENCY_CONVERTER_URL_API } from "./actionTypes";
 
 export function fetchCurrencies() {
     return dispatch => {
@@ -7,35 +7,19 @@ export function fetchCurrencies() {
     }
 }
 export function updateCurrencyBase(currency) {
-    return dispatch => {
-        dispatch(updateCurBase(currency))
-    }
-}
-export function updateCurrencyTarget(currency) {
-    return dispatch => {
-        dispatch(updateCurTarget(currency))
-    }
-}
-export function updateCurrencyAmount(value) {
-    return dispatch => {
-        dispatch(updateCurAmount(value))
-    }
-}
-export function calculateResult(result) {
-    return dispatch => {
-        dispatch(calculateResultAmount(result))
-    }
-}
-export function calculateResultAmount(result) {
-    return { type: 'CALCULATE_TOTAL_AMOUNT', result }
+    return { type: 'UPDATE_CURRENCY_BASE', currency }
 }
 
-export function updateCurAmount(value) {
+export function updateCurrencyTarget(currency) {
+    return { type: 'UPDATE_CURRENCY_TARGET', currency }
+}
+
+export function updateCurrencyAmount(value) {
     return { type: 'UPDATE_CURRENCY_AMOUNT', value }
 }
 
-export function updateCurTarget(currency) {
-    return { type: 'UPDATE_CURRENCY_TARGET', currency }
+export function calculateResult(result) {
+    return { type: 'CALCULATE_TOTAL_AMOUNT', result }
 }
 
 export function updateCurBase(currency) {
@@ -58,7 +42,6 @@ export function getCurrenciesList() {
                 console.log('Error = ', err);
                 dispatch(setCurrenciesError(err))
             })
-        
     }
 }
 

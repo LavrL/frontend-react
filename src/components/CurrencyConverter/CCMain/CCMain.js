@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-import { connect } from "react-redux";
-// import PropTypes from 'prop-types';
-import {
-    fetchCurrencies,
-    updateCurrencyBase,
-    updateCurrencyTarget,
-    updateCurrencyAmount,
-    calculateResult
-} from "../../../actions/actionCalcCurr";
-import './CCMain.css';
 import { CURRENCY_CONVERTER_URL_API } from "../../../actions/actionTypes";
+import { connect } from "react-redux";
+import {
+        fetchCurrencies,
+        updateCurrencyBase,
+        updateCurrencyTarget,
+        updateCurrencyAmount,
+        calculateResult } from "../../../actions/actionCalcCurr";
+import './CCMain.css';
 
 export class CCMain extends Component {
     componentDidMount() {
@@ -42,6 +40,7 @@ export class CCMain extends Component {
                 console.log('Error = ', err);
             });
     }
+
     render() {
         return (
             <div>
@@ -49,25 +48,25 @@ export class CCMain extends Component {
                 <div className="cc__row">
                     <p>Currency I have
                 <input type="text"
-                        className="cc__input-text"
-                        name="currencyAmount"
-                        pattern="[0-9]*"
-                        value={this.props.currencyAmount}
-                        onChange={this.onChange} />
-                <select name="from"
-                    onChange={this.change}
-                    value={this.props.currencyBase}>
-                    {this.props.currencyList.map((item, key) =>
-                        <option key={key}>{item}</option>)}
-                </select></p>
+                            className="cc__input-text"
+                            name="currencyAmount"
+                            pattern="[0-9]*"
+                            value={this.props.currencyAmount}
+                            onChange={this.onChange} />
+                        <select name="from"
+                            onChange={this.change}
+                            value={this.props.currencyBase}>
+                            {this.props.currencyList.map((item, key) =>
+                                <option key={key}>{item}</option>)}
+                        </select></p>
                     <p>Currency I want
                 <select name="to"
-                    className="cc__input-text"
-                    onChange={this.change}
-                    value={this.props.currencyTo}>
-                    {this.props.currencyList.map((item, key) =>
-                        <option key={key}>{item}</option>)}
-                </select></p>
+                            className="cc__input-text"
+                            onChange={this.change}
+                            value={this.props.currencyTo}>
+                            {this.props.currencyList.map((item, key) =>
+                                <option key={key}>{item}</option>)}
+                        </select></p>
                 </div>
                 <div className="cc__button">
                     <button className="button-currency__orange"
@@ -80,11 +79,11 @@ export class CCMain extends Component {
 }
 
 const mapStateToProps = state => ({
-    currencyAmount: state.reducerCalc.currencyAmount,
-    currencyList: state.reducerCalc.currencyList,
-    currencyBase: state.reducerCalc.currencyBase,
-    currencyTo: state.reducerCalc.currencyTo,
-    finalResult: state.reducerCalc.finalResult
+    currencyAmount: state.reducerCalcCurr.currencyAmount,
+    currencyList: state.reducerCalcCurr.currencyList,
+    currencyBase: state.reducerCalcCurr.currencyBase,
+    currencyTo: state.reducerCalcCurr.currencyTo,
+    finalResult: state.reducerCalcCurr.finalResult
 });
 
 const mapDispatchToProps = dispatch => ({

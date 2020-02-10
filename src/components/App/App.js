@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Router, Switch, Redirect } from 'react-router-dom';
+import { Route, Router, Switch } from 'react-router-dom';
 import Home from "../Home/Home";
 import { createBrowserHistory } from 'history';
 import './App.css';
@@ -17,7 +17,7 @@ class App extends Component {
       <React.Fragment >
         <Router history={history}>
           <Switch>
-            <Route exact path="/" render={() => (<Redirect to="/home" />)} />
+            <Route exact path="/" component={Home} />
             <Route path="/home" component={Home} ></Route>
           </Switch>
         </Router>

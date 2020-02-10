@@ -5,7 +5,7 @@ import CCMain from './CCMain/CCMain';
 const CurrencyConverter = () => {
     return (
         <div>
-            <CCMain />
+            <CCMain/>
         </div>
     )
 }
