@@ -30,7 +30,6 @@ export class CCMain extends Component {
 
     convert = (e) => {
         e.preventDefault();
-        console.log('converting ...');
         fetch(`${CURRENCY_CONVERTER_URL_API}?base=${this.props.currencyBase}&symbols=${this.props.currencyTo}`)
             .then((res) => { return res.json() })
             .then((result) => {

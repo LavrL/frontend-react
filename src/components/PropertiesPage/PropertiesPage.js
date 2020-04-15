@@ -33,7 +33,6 @@ class PropertiesPage extends Component {
     onItemAdded = (label) => {
         this.setState((state) => {
             const item = this.createItem(label);
-            // console.log(item);
             return { items: [...state.items, item] }
         })
     }

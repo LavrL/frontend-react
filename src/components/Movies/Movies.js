@@ -27,7 +27,6 @@ const reducer = (state, action) => {
                 movies: action.payload
             };
         case "SEARCH_MOVIES_FAILURE":
-            // console.log('action ', action)
             return {
                 ...state,
                 loading: false,
@@ -45,7 +44,6 @@ const Movies = () => {
         fetch(MOVIE_API)
             .then(response => response.json())
             .then(jsonResponse => {
-                // console.log('jsonResponse ', jsonResponse)
                 dispatch({
                     type: "SEARCH_MOVIES_SUCCESS",
                     payload: jsonResponse.Search
@@ -58,8 +56,6 @@ const Movies = () => {
             type: "SEARCH_MOVIES_REQUEST"
         });
 
-        // console.log('searchValue = ', searchValue)
-
         fetch(`https://www.omdbapi.com/?s=${searchValue}&apikey=5d508a92`)
             .then(response => response.json())
             .then(jsonResponse => {
@@ -69,7 +65,6 @@ const Movies = () => {
                         payload: jsonResponse.Search
                     })
                 } else {
-                    // console.log('jsonResponse ', jsonResponse);
                     dispatch({
                         type: "SEARCH_MOVIES_FAILURE",
                         payload: jsonResponse.Error
@@ -79,8 +74,7 @@ const Movies = () => {
     };
 
     const { movies, errorMessages, loading } = state;
-    // console.log('state ', errorMessages);
-
+    
     return (
         <div className="Movies">
             <Header text="MOVIE SEARCH" />

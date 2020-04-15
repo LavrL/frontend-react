@@ -1,6 +1,7 @@
 .calculator-row {
     display: flex;
 }
+
 .calculator-row-center {
     display: flex;
     text-align: center;

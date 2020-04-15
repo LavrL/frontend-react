@@ -1,4 +1,3 @@
-import store from '../redux/store';
 import { CURRENCY_CONVERTER_URL_API } from "./actionTypes";
 
 export function fetchCurrencies() {
@@ -29,14 +28,13 @@ export function updateCurBase(currency) {
 export function getCurrenciesList() {
     return dispatch => {
         return fetch(CURRENCY_CONVERTER_URL_API)
-            .then((res) => { console.log(res.status); return res.json() })
+            .then((res) => { return res.json() })
             .then((result) => {
                 const currencyAr = ["EUR"];
                 for (let key in result.rates) {
                     currencyAr.push(key);
                 }
                 dispatch(setCurrencies(currencyAr))
-                console.log('currencyList ', store.getState().reducerCalc.currencyList)
             })
             .catch((err) => {
                 console.log('Error = ', err);

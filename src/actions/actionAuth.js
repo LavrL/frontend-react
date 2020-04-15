@@ -13,7 +13,6 @@ export function login(username, password) {
 
         const url = BACKEND_URL + "me";
         const headers = new Headers();
-        console.log(username, password)
         headers.append("Authorization", make_base_auth(username, password));
         headers.append("Content-Type", "application/json");
 
@@ -22,7 +21,6 @@ export function login(username, password) {
             headers: headers,
         }).then(handleErrors)
             .then(response => {
-                console.log("ok");
                 return response.json()
             }).then((data) => {
                 dispatch(setLoginPending(false));
