@@ -2,9 +2,9 @@ import React from 'react';
 import './Button.css';
 
 const Button = (props) => {
-    return(
+    return (
         <div className={props.buttonClass}
-             onClick={props.onClick}>
+            onClick={props.onClick}>
             {props.value}
         </div>
     )
