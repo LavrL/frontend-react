@@ -48,7 +48,7 @@ class Calculator extends Component {
                 default:
                     this.setState({
                         result: this.state.result + key
-                    }, () => { return console.log(this.state.result) })
+                    })
             }
         }
     }
@@ -63,7 +63,7 @@ class Calculator extends Component {
             <div className="calculator-row-center">
                 <h1>Calculator</h1>
                 <div>
-                    <Button value={this.state.result} buttonClass=" btn-input" />
+                    <Button value={this.state.result} buttonClass="btn-input" />
                     <div className="calculator-row">
                         <Button value="AC"
                             buttonClass="btn btn-lightgrey"
