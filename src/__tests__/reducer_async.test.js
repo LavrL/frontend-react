@@ -1,8 +1,5 @@
-import reducer from '../reducers/reducerCalcCurr';
-import {
-    getCurrenciesList,
-    fetchCurrencies
-} from '../actions/actionCalcCurr';
+import { getCurrenciesList } from '../actions/actionCalcCurr';
+
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import fetchMock from 'fetch-mock';  // You can use any http mocking library
