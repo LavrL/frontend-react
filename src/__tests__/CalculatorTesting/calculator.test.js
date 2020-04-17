@@ -1,9 +1,10 @@
 import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
 import Calculator from '../../components/Calculator/Calculator';
-import { mount, render, configure, shallow } from 'enzyme';
+import { mount, configure } from 'enzyme';
 
 configure({ adapter: new Adapter() });
+
 describe('Calculator testing', () => {
     let wrapper;
     let buttonTyping;
