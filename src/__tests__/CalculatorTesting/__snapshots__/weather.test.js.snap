@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Calculator testing Weather component renders correctly 1`] = `
+<div
+  className="weather-block__center"
+>
+  <input
+    className="weather__input-text"
+    name="city"
+    onChange={[Function]}
+    type="text"
+    value="Riga"
+  />
+  <input
+    className="weather__input-text"
+    name="country"
+    onChange={[Function]}
+    type="text"
+    value="LV"
+  />
+  <button
+    className="button-weather__orange"
+    onClick={[Function]}
+  >
+    Get Weather
+  </button>
+  <div>
+     
+  </div>
+</div>
+`;
