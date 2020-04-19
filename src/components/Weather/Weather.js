@@ -95,8 +95,7 @@ class Weather extends Component {
                             <span className="weather__forecast_number">{this.state.maxTemp}</span>
                         </h3>
                     </div>
-                    <div> <h3>
-                        {this.state.main}</h3>
+                    <div><h3>{this.state.main}</h3>
                     </div> </React.Fragment>}
                     {this.state.showError && <div className="weather-error">Incorrect City or Country</div>}
                 </div>
