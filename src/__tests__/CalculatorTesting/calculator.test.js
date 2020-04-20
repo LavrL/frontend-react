@@ -4,7 +4,6 @@ import Calculator from '../../components/Calculator/Calculator';
 import { mount, configure } from 'enzyme';
 
 configure({ adapter: new Adapter() });
-
 describe('Calculator testing', () => {
     let wrapper;
     let buttonTyping;
@@ -27,12 +26,23 @@ describe('Calculator testing', () => {
         expect(wrapper.find('h1').text()).toEqual("Calculator");
     });
 
-    test('check typing number and click event', () => {
+    test('check typing numbers and click events', () => {
         buttonTyping(5);
         buttonTyping(6);
+        buttonTyping(7);
+        buttonTyping(13);
+        buttonTyping(17);
 
-        expect(wrapper.find('Button').at(0).text()).toBe('78');
+        expect(wrapper.find('Button').at(0).text()).toBe('78910');
     });
+    test('test clear typed numbers', () => {
+        buttonTyping(17);
+        expect(wrapper.find('Button').at(0).text()).toBe('0'); // typed '0'
+
+        buttonTyping(1);
+        expect(wrapper.find('Button').at(0).text()).toBe('');
+
+    })
     test('check if state changing after button clicked', () => {
 
         const submitButtonEleven = wrapper.find('Button').at(11);
@@ -69,8 +79,8 @@ describe('Calculator testing', () => {
 
         expect(wrapper.state()).not.toEqual({ "result": 14 }); // state = 13
         expect(wrapper.find('Button').at(0).text()).not.toBe('14'); //shown = 13
-
     });
+
     test('checking working with float numbers(4.2 * 6.004) = 25.2168 ', () => {
 
         buttonTyping(9); // 4
