@@ -19,6 +19,8 @@ cd frontend-react
 npm i
 
 npm run start
+
+npm run test
 ```
 
 ## Used:
@@ -26,3 +28,4 @@ npm run start
 + React Hooks
 + Redux
 + Webpack
++ Jest
