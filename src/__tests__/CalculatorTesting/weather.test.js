@@ -2,26 +2,71 @@ import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
 import Weather from '../../components/Weather/Weather';
 import renderer from 'react-test-renderer';
-import { mount, configure } from 'enzyme';
+import { mount, configure, shallow } from 'enzyme';
 import axios from 'axios';
 import { REACT_APP_WEATHER_APPID } from '../../utils/constants';
 import { fetchData } from '../../utils/fetchData';
+import { api1 } from '../../../src/utils/api';
+import fetchMock from 'jest-fetch-mock';
 
 jest.mock('axios');
-//const mockGetWeather = jest.fn();
 
 configure({ adapter: new Adapter() });
 
 describe('Calculator testing', () => {
 
     let wrapper;
+    const data = {
+        result: {
+            temp: '10',
+            minTemp: '6',
+            maxTemp: '12',
+            description: 'rain'
+        }
+    };
 
     beforeAll(() => {
         wrapper = mount(<Weather />);
+        fetchMock.resetMocks();
     });
 
     afterAll(() => {
         wrapper.unmount();
+    });
+
+    test('getWeather button click event', () => {
+        const mockCallBack = jest.fn();
+
+        const buttonGetWeather = shallow(<button onClick={mockCallBack} />);
+        buttonGetWeather.getElement().props.onClick();
+        expect(mockCallBack).toHaveBeenCalled();
+    });
+
+    test('should handle click correctly', async () => {
+        fetch.mockResponseOnce(JSON.stringify({ name: '123' }));
+        const buttonWrapper = shallow(<Weather />);
+
+        expect(buttonWrapper.find('button.button-weather__orange').length).toBe(1);
+        expect(wrapper.state().showWeather).toBe(false);
+
+        expect(buttonWrapper.find('button.button-weather__orange').simulate('click', { preventDefault: () => { } }));
+        
+    })
+
+    test('return result response.json', () => {
+        fetchMock.mockResponseOnce(JSON.stringify(['Riga', 'Latvia', REACT_APP_WEATHER_APPID]));
+        const onResponse = jest.fn();
+        const onError = jest.fn();
+
+        return api1('Riga', 'Latvia', REACT_APP_WEATHER_APPID)
+            .then(onResponse)
+            .catch(onError)
+            .finally(() => {
+                expect(onResponse).toHaveBeenCalled()
+                expect(onError).not.toHaveBeenCalled();
+
+                expect(onResponse.mock.calls[0][0]).toEqual(['Riga', 'Latvia', REACT_APP_WEATHER_APPID]);
+            })
     });
 
     test('should return weather component initial state', () => {
@@ -76,21 +121,11 @@ describe('Calculator testing', () => {
         expect(wrapper.state().country).toEqual('France');
     });
 
-
-
     test('fetches successfully data from OpenWeather API', async () => {
-        const data = {
-            result: {
-                temp: '10',
-                minTemp: '6',
-                maxTemp: '12',
-                description: 'rain'
-            }
-        };
 
         axios.get.mockImplementationOnce(() => Promise.resolve(data));
         await expect(fetchData('Riga', 'Latvia', REACT_APP_WEATHER_APPID)).resolves.toEqual(data);
-       
+
         wrapper.setState({ showWeather: true });
         expect(wrapper.state().showWeather).toEqual(true);
 
@@ -128,16 +163,16 @@ describe('Calculator testing', () => {
 
         await expect(fetchData('Riga', 'Latvia', REACT_APP_WEATHER_APPID)).rejects.toThrow(errorMsg);
     });
-    test('show error when search is not successfull',() => {
+    test('show error when search is not successfull', () => {
         wrapper.setState({ showError: true });
 
         expect(wrapper.find('div.weather-error').text()).toEqual('Incorrect City or Country');
-    })
-    test('show no error when search is successfull',() => {
+    });
+    test('show no error when search is successfull', () => {
         wrapper.setState({ showError: false });
 
         expect(wrapper.find('div.weather-error')).toHaveLength(0);
-    })
+    });
 
 });
 

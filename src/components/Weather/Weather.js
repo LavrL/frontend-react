@@ -33,6 +33,7 @@ class Weather extends Component {
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.city},${this.state.country}&units=metric&appid=${REACT_APP_WEATHER_APPID}`)
             .then((res) => { return res.json() })
             .then((result) => {
+                /* istanbul ignore else*/
                 if (!this.state.showWeather) {
                     this.setState({
                         showWeather: !this.state.showWeather

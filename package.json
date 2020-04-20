@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "connected-react-router": "^6.6.1",
+    "jest-fetch-mock": "^3.0.3",
     "node-fetch": "^2.6.0",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
@@ -31,7 +32,9 @@
     },
     "setupFilesAfterEnv": [
       "<rootDir>/jest.setup.js"
-    ]
+    ],
+    "automock": false,
+    "setupFiles":["<rootDir>/setupJest.js"]
   },
   "eslintConfig": {
     "extends": "react-app"
