@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { CURRENCY_CONVERTER_URL_API } from "../../../actions/actionTypes";
 import { connect } from "react-redux";
 import {
-        fetchCurrencies,
-        updateCurrencyBase,
-        updateCurrencyTarget,
-        updateCurrencyAmount,
-        calculateResult } from "../../../actions/actionCalcCurr";
+    fetchCurrencies,
+    updateCurrencyBase,
+    updateCurrencyTarget,
+    updateCurrencyAmount,
+    calculateResult
+} from "../../../actions/actionCalcCurr";
 import './CCMain.css';
 
 export class CCMain extends Component {
@@ -14,13 +15,11 @@ export class CCMain extends Component {
         this.props.fetchCurrencies();
     }
     onChange = (e) => {
-        e.preventDefault();
         const value = (e.target.validity.valid) ? e.target.value : this.props.currencyAmount;
         this.props.updateCurrencyAmount(value);
     }
 
     change = (event) => {
-        event.preventDefault();
         if (event.target.name === "from") {
             this.props.updateCurrencyBase(event.target.value);
         } else if (event.target.name === "to") {
@@ -28,16 +27,15 @@ export class CCMain extends Component {
         }
     }
 
-    convert = (e) => {
-        e.preventDefault();
-        fetch(`${CURRENCY_CONVERTER_URL_API}?base=${this.props.currencyBase}&symbols=${this.props.currencyTo}`)
-            .then((res) => { return res.json() })
-            .then((result) => {
-                this.props.calculateResult(result);
-            })
-            .catch(err => {
-                console.log('Error = ', err);
-            });
+    async convert() {
+        try {
+            let res = await fetch(`${CURRENCY_CONVERTER_URL_API}?base=${this.props.currencyBase}&symbols=${this.props.currencyTo}`)
+            let data = await res.json();
+            await this.props.calculateResult(data);
+        }
+        catch(err) {
+            console.log('Error = ', err);
+        }
     }
 
     render() {
@@ -69,7 +67,7 @@ export class CCMain extends Component {
                 </div>
                 <div className="cc__button">
                     <button className="button-currency__orange"
-                        onClick={this.convert}>Convert</button>
+                        onClick={this.convert.bind(this)}>Convert</button>
                 </div>
                 <div className="cc__result">Result : {this.props.finalResult}</div>
             </div>

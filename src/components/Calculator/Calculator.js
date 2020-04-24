@@ -52,6 +52,20 @@ class Calculator extends Component {
             }
         }
     }
+    btn = (btnClass, value) => {
+        let btnValue;
+        if (value === "AC") {
+            btnValue = "";
+        } else {
+            btnValue = value
+        }
+        return (
+            <Button value={value}
+                buttonClass={btnClass}
+                onClick={() => this.ButtonClick(btnValue)} />
+        )
+    }
+
     calculate = () => {
         this.setState({
             result: eval(this.state.result)
@@ -65,71 +79,34 @@ class Calculator extends Component {
                 <div>
                     <Button value={this.state.result} buttonClass="btn-input" />
                     <div className="calculator-row">
-                        <Button value="AC"
-                            buttonClass="btn btn-lightgrey"
-                            onClick={() => this.ButtonClick('')} />
-                        <Button value="+/-"
-                            buttonClass="btn btn-lightgrey"
-                            onClick={() => this.ButtonClick('+/-')} />
-                        <Button value="%"
-                            buttonClass="btn btn-lightgrey"
-                            onClick={() => this.ButtonClick('%')} />
-                        <Button value="/"
-                            buttonClass="btn btn-orange btn-text-color"
-                            onClick={() => this.ButtonClick('/')} />
+                        {this.btn("btn btn-lightgrey", "AC")}
+                        {this.btn("btn btn-lightgrey", "+/-")}
+                        {this.btn("btn btn-lightgrey", "%")}
+                        {this.btn("btn btn-lightgrey", "/")}
                     </div>
                     <div className="calculator-row">
-                        <Button value="7"
-                            buttonClass="btn btn-grey btn-text-color"
-                            onClick={() => this.ButtonClick('7')} />
-                        <Button value="8"
-                            buttonClass="btn btn-grey btn-text-color"
-                            onClick={() => this.ButtonClick('8')} />
-                        <Button value="9"
-                            buttonClass="btn btn-grey btn-text-color"
-                            onClick={() => this.ButtonClick('9')} />
-                        <Button value="*"
-                            buttonClass="btn btn-orange btn-text-color"
-                            onClick={() => this.ButtonClick('*')} />
+                        {this.btn("btn btn-grey btn-text-color", "7")}
+                        {this.btn("btn btn-grey btn-text-color", "8")}
+                        {this.btn("btn btn-grey btn-text-color", "9")}
+                        {this.btn("btn btn-orange btn-text-color", "*")}
                     </div>
                     <div className="calculator-row">
-                        <Button value="4"
-                            buttonClass="btn btn-grey btn-text-color"
-                            onClick={() => this.ButtonClick('4')} />
-                        <Button value="5"
-                            buttonClass="btn btn-grey btn-text-color"
-                            onClick={() => this.ButtonClick('5')} />
-                        <Button value="6"
-                            buttonClass="btn btn-grey btn-text-color"
-                            onClick={() => this.ButtonClick('6')} />
-                        <Button value="-"
-                            buttonClass="btn btn-orange btn-text-color"
-                            onClick={() => this.ButtonClick('-')} />
+                        {this.btn("btn btn-grey btn-text-color", "4")}
+                        {this.btn("btn btn-grey btn-text-color", "5")}
+                        {this.btn("btn btn-grey btn-text-color", "6")}
+                        {this.btn("btn btn-orange btn-text-color", "-")}
                     </div>
                     <div className="calculator-row">
-                        <Button value="1"
-                            buttonClass="btn btn-grey btn-text-color"
-                            onClick={() => this.ButtonClick('1')} />
-                        <Button value="2"
-                            buttonClass="btn btn-grey btn-text-color"
-                            onClick={() => this.ButtonClick('2')} />
-                        <Button value="3"
-                            buttonClass="btn btn-grey btn-text-color"
-                            onClick={() => this.ButtonClick('3')} />
-                        <Button value="+"
-                            buttonClass="btn btn-orange btn-text-color"
-                            onClick={() => this.ButtonClick('+')} />
+                        {this.btn("btn btn-grey btn-text-color", "1")}
+                        {this.btn("btn btn-grey btn-text-color", "2")}
+                        {this.btn("btn btn-grey btn-text-color", "3")}
+                        {this.btn("btn btn-orange btn-text-color", "+")}
                     </div>
                     <div className="calculator-row">
-                        <Button value="0"
-                            buttonClass="btn btn-grey btn-text-color"
-                            onClick={() => this.ButtonClick('0')} />
-                        <Button value="00"
-                            buttonClass="btn btn-grey btn-text-color"
-                            onClick={() => this.ButtonClick('00')} />
-                        <Button value="."
-                            buttonClass="btn btn-grey btn-text-color"
-                            onClick={() => this.ButtonClick('.')} />
+                        {this.btn("btn btn-grey btn-text-color", "0")}
+                        {this.btn("btn btn-grey btn-text-color", "00")}
+                        {this.btn("btn btn-grey btn-text-color", ".")}
+
                         <Button value="="
                             buttonClass="btn btn-orange btn-text-color"
                             onClick={() => this.calculate()} />
