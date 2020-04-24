@@ -2,7 +2,6 @@ import Calculator from '../Calculator/Calculator';
 import CurrencyConverter from '../CurrencyConverter/CurrencyConverter';
 import Homepage from './HomePage';
 import Movies from '../Movies/Movies';
-import ProfilePage from '../ProfilePage/ProfilePage';
 import PropertiesPage from '../PropertiesPage/PropertiesPage';
 import React from 'react';
 import Weather from '../Weather/Weather';
@@ -17,10 +16,6 @@ const routes = [
     {
         path: "/movies",
         main: Movies
-    },
-    {
-        path: "/profile",
-        main: () => ProfilePage()
     },
     {
         path: "/currencyConverter",
