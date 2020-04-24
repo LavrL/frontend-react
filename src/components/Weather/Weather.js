@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { REACT_APP_WEATHER_APPID } from '../../utils/constants';
+import InputComponent from '../InputComponent/InputComponent';
 
 import './Weather.css';
 
@@ -23,13 +24,11 @@ class Weather extends Component {
     }
 
     onChange = (e) => {
-        e.preventDefault();
         this.setState({
             [e.target.name]: e.target.value
         });
     }
-    getWeather = (e) => {
-        e.preventDefault();
+    getWeather = () => {
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.city},${this.state.country}&units=metric&appid=${REACT_APP_WEATHER_APPID}`)
             .then((res) => { return res.json() })
             .then((result) => {
@@ -62,16 +61,21 @@ class Weather extends Component {
         const { city, country } = this.state;
         return (
             <div className="weather-block__center">
-                <input type="text"
+                <InputComponent
+                    type="text"
                     className="weather__input-text"
                     name="city"
-                    value={city}
-                    onChange={this.onChange} />
-                <input type="text"
+                    place={city}
+                    onChange={this.onChange}
+                />
+                <InputComponent
+                    type="text"
                     className="weather__input-text"
                     name="country"
-                    value={country}
-                    onChange={this.onChange} />
+                    place={country}
+                    onChange={this.onChange}
+                />
+
                 <button className="button-weather__orange"
                     onClick={this.getWeather}>Get Weather</button>
                 <div> {this.state.showWeather && <React.Fragment>

@@ -74,7 +74,7 @@ const Movies = () => {
     };
 
     const { movies, errorMessages, loading } = state;
-    
+
     return (
         <div className="Movies">
             <Header text="MOVIE SEARCH" />

@@ -6,14 +6,15 @@ import { mount, configure, shallow } from 'enzyme';
 import axios from 'axios';
 import { REACT_APP_WEATHER_APPID } from '../../utils/constants';
 import { fetchData } from '../../utils/fetchData';
-import { api1 } from '../../../src/utils/api';
+import { api } from '../../../src/utils/api';
 import fetchMock from 'jest-fetch-mock';
+//import InputComponent from '../../components/InputComponent/InputComponent';
 
 jest.mock('axios');
 
 configure({ adapter: new Adapter() });
 
-describe('Calculator testing', () => {
+describe('Weather testing', () => {
 
     let wrapper;
     const data = {
@@ -58,7 +59,7 @@ describe('Calculator testing', () => {
         const onResponse = jest.fn();
         const onError = jest.fn();
 
-        return api1('Riga', 'Latvia', REACT_APP_WEATHER_APPID)
+        return api('Riga', 'Latvia', REACT_APP_WEATHER_APPID)
             .then(onResponse)
             .catch(onError)
             .finally(() => {
@@ -100,7 +101,7 @@ describe('Calculator testing', () => {
     test('updates first input field "city" ', () => {
         const fieldName = 'city';
 
-        wrapper.find('[name="city"]').simulate('change', {
+        wrapper.find('[name="city"]').at(0).simulate('change', {
             target: {
                 name: fieldName,
                 value: 'Paris'
@@ -112,7 +113,7 @@ describe('Calculator testing', () => {
     test('updates second input field "country" ', () => {
         const fieldName = 'country';
 
-        wrapper.find('[name="country"]').simulate('change', {
+        wrapper.find('[name="country"]').at(1).simulate('change', {
             target: {
                 name: fieldName,
                 value: 'France'
