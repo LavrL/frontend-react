@@ -40,10 +40,8 @@ class Calculator extends Component {
                         })
                     };
                     break;
-                case '':
-                    this.setState({
-                        result: '0'
-                    });
+                case 'AC':
+                    this.setState({ result: '0' });
                     break;
                 default:
                     this.setState({
@@ -55,7 +53,7 @@ class Calculator extends Component {
     btn = (btnClass, value) => {
         let btnValue;
         if (value === "AC") {
-            btnValue = "";
+            btnValue = 'AC';
         } else {
             btnValue = value
         }

@@ -6,7 +6,7 @@ import { mount, configure, shallow } from 'enzyme';
 import axios from 'axios';
 import { REACT_APP_WEATHER_APPID } from '../../utils/constants';
 import { fetchData } from '../../utils/fetchData';
-import { api } from '../../../src/utils/api';
+import { api } from '../../utils/api';
 import fetchMock from 'jest-fetch-mock';
 //import InputComponent from '../../components/InputComponent/InputComponent';
 

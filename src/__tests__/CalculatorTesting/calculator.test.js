@@ -35,12 +35,12 @@ describe('Calculator testing', () => {
 
         expect(wrapper.find('Button').at(0).text()).toBe('78910');
     });
-    test('test clear typed numbers', () => {
+    test('test typed numbers', () => {
         buttonTyping(17);
         expect(wrapper.find('Button').at(0).text()).toBe('0'); // typed '0'
 
-        buttonTyping(1);
-        expect(wrapper.find('Button').at(0).text()).toBe('');
+        buttonTyping(3);
+        expect(wrapper.find('Button').at(0).text()).toBe('%');
 
     })
     test('check if state changing after button clicked', () => {
@@ -82,7 +82,6 @@ describe('Calculator testing', () => {
     });
 
     test('checking working with float numbers(4.2 * 6.004) = 25.2168 ', () => {
-
         buttonTyping(9); // 4
         buttonTyping(19); // .
         buttonTyping(14); // 2
@@ -95,5 +94,12 @@ describe('Calculator testing', () => {
 
         expect(wrapper.state()).toEqual({ "result": 25.2168 });
         expect(wrapper.state()).not.toEqual({ "result": 25.2167 });
+    });
+
+    test('clicking AC, return state = 0', () => {
+        buttonTyping(11);
+        buttonTyping(3);
+        buttonTyping(1);
+        expect(wrapper.state()).toEqual({ "result": "0" });
     })
 });
