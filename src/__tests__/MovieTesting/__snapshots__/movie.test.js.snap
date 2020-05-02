@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Moview testing Movie component renders correctly 1`] = `
+<div
+  className="Movies"
+>
+  <header>
+    <h2
+      className="header__text"
+    >
+      MOVIE SEARCH
+    </h2>
+  </header>
+  <div
+    className="search"
+  >
+    <input
+      onChange={[Function]}
+      placeholder="Enter a movie: (ex. Batman)"
+      type="text"
+      value=""
+    />
+    <input
+      onClick={[Function]}
+      type="submit"
+      value="SEARCH"
+    />
+  </div>
+  <p
+    className="Movies-intro"
+  >
+    Find your favourite movies
+  </p>
+  <div
+    className="movies"
+  >
+    <span>
+      loading ... 
+    </span>
+  </div>
+</div>
+`;
