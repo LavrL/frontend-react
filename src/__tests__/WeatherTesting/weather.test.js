@@ -44,7 +44,7 @@ describe('Weather testing', () => {
     });
 
     test('should handle click correctly', async () => {
-        fetch.mockResponseOnce(JSON.stringify({ name: '123' }));
+        fetch.mockResponseOnce(JSON.stringify({main : { temp_min : '123'} }));
         const buttonWrapper = shallow(<Weather />);
 
         expect(buttonWrapper.find('button.button-weather__orange').length).toBe(1);

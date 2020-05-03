@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Moview testing Movie component renders correctly 1`] = `
+exports[`Movie testing Movie component renders correctly 1`] = `
 <div
   className="Movies"
 >

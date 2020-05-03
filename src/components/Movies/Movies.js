@@ -12,7 +12,7 @@ const initialState = {
     errorMessages: null
 }
 
-const reducer = (state, action) => {
+export const reducer = (state = initialState, action) => {
     switch (action.type) {
         case "SEARCH_MOVIES_REQUEST":
             return {

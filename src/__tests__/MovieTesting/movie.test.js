@@ -1,23 +1,35 @@
-import React, { useState, useReducer } from 'react';
+import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
 import Movies from '../../components/Movies/Movies';
+import { reducer } from '../../components/Movies/Movies';
 import Movie from '../../components/Movies/Movie/Movie';
 import Search from '../../components/Movies/Search/Search';
 import renderer from 'react-test-renderer';
-import { mount, configure, shallow } from 'enzyme';
-import axios from 'axios';
-import { fetchData } from '../../utils/fetchData';
+import { mount, configure } from 'enzyme';
 import fetchMock from 'jest-fetch-mock';
 import { DEFAULT_IMAGE } from '../../utils/constants';
-import * as ReactRedux from 'react-redux'
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+//import nock from 'nock';
+//import fetch from 'isomorphic-fetch';
+
+const middlewares = [thunk];
+const mockStore = configureMockStore(middlewares);
 
 jest.mock('axios');
 
 configure({ adapter: new Adapter() });
 
-describe('Moview testing', () => {
+describe('Movie testing', () => {
 
     let wrapper;
+    let action;
+
+    const initialState = {
+        loading: true,
+        movies: [],
+        errorMessages: null
+    };
 
     beforeAll(() => {
         wrapper = mount(<Movies />);
@@ -34,14 +46,6 @@ describe('Moview testing', () => {
             .toJSON();
         expect(tree).toMatchSnapshot();
     });
-
-    // test('handleSearchInputChanges calls setSearchValue(e.target.value)', () => {
-    //     const useStateSpy = jest.spyOn(React, 'useState');
-    //     const mockSetState = jest.fn();
-    //     jest.mock('react', () => ({
-    //         useState: initial => [initial, mockSetState]
-    //     }));
-    // });
 
     test('testing Movie component parameters', () => {
         const props = {
@@ -62,6 +66,45 @@ describe('Moview testing', () => {
         };
         let movieComponent = mount(<Movie movie={movie} />);
         expect(movieComponent.find('img').prop('src')).toEqual(DEFAULT_IMAGE);
+    });
+
+    test('reducer testing: SEARCH_MOVIES_REQUEST', () => {
+        const mockStore = configureMockStore();
+        const store = mockStore({});
+
+        let state;
+        expect(reducer(state, {})).toEqual(initialState)
+
+        action = { type: "SEARCH_MOVIES_REQUEST" };
+        expect(reducer(initialState, action))
+            .toEqual({
+                loading: true,
+                errorMessages: null,
+                movies: []
+            });
+    });
+
+    test('reducer testing: SEARCH_MOVIES_SUCCESS', () => {
+        action = { type: "SEARCH_MOVIES_SUCCESS" };
+        expect(reducer(initialState, action))
+            .toEqual({
+                loading: false,
+                errorMessages: null,
+                movies: Array[
+                    { 'Poster': "Superman", 'Title': "Superman returns" },
+                    { 'Poster': "Batman", 'Title': "Batman returns" }
+                ]
+            });
+    });
+
+    test('reducer testing: SEARCH_MOVIES_FAILURE', () => {
+        action = { type: "SEARCH_MOVIES_FAILURE" };
+        expect(reducer(initialState, action))
+            .toEqual({
+                loading: false,
+                errorMessages: undefined,
+                movies: []
+            });
     });
 
 });
