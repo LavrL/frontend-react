@@ -34,7 +34,9 @@
       "<rootDir>/jest.setup.js"
     ],
     "automock": false,
-    "setupFiles":["<rootDir>/setupJest.js"]
+    "setupFiles": [
+      "<rootDir>/setupJest.js"
+    ]
   },
   "eslintConfig": {
     "extends": "react-app"

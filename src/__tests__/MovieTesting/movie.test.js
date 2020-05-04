@@ -3,18 +3,12 @@ import Adapter from 'enzyme-adapter-react-16';
 import Movies from '../../components/Movies/Movies';
 import { reducer } from '../../components/Movies/Movies';
 import Movie from '../../components/Movies/Movie/Movie';
-import Search from '../../components/Movies/Search/Search';
+//import Search from '../../components/Movies/Search/Search';
 import renderer from 'react-test-renderer';
-import { mount, configure } from 'enzyme';
+import { mount, configure, shallow } from 'enzyme';
 import fetchMock from 'jest-fetch-mock';
 import { DEFAULT_IMAGE } from '../../utils/constants';
-import configureMockStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
-//import nock from 'nock';
-//import fetch from 'isomorphic-fetch';
-
-const middlewares = [thunk];
-const mockStore = configureMockStore(middlewares);
+import Search from '../../components/Movies/Search/Search';
 
 jest.mock('axios');
 
@@ -69,8 +63,6 @@ describe('Movie testing', () => {
     });
 
     test('reducer testing: SEARCH_MOVIES_REQUEST', () => {
-        const mockStore = configureMockStore();
-        const store = mockStore({});
 
         let state;
         expect(reducer(state, {})).toEqual(initialState)
@@ -85,26 +77,45 @@ describe('Movie testing', () => {
     });
 
     test('reducer testing: SEARCH_MOVIES_SUCCESS', () => {
-        action = { type: "SEARCH_MOVIES_SUCCESS" };
+        action = {
+            type: "SEARCH_MOVIES_SUCCESS",
+            payload: [{ 'Poster': "Superman", 'Title': "Superman returns" }]
+        };
         expect(reducer(initialState, action))
             .toEqual({
                 loading: false,
                 errorMessages: null,
-                movies: Array[
-                    { 'Poster': "Superman", 'Title': "Superman returns" },
-                    { 'Poster': "Batman", 'Title': "Batman returns" }
+                movies: [
+                    { 'Poster': "Superman", 'Title': "Superman returns" }
                 ]
             });
     });
 
     test('reducer testing: SEARCH_MOVIES_FAILURE', () => {
-        action = { type: "SEARCH_MOVIES_FAILURE" };
+        action = {
+            type: "SEARCH_MOVIES_FAILURE",
+            payload: { 'Error': 'Not found' }
+        };
         expect(reducer(initialState, action))
             .toEqual({
                 loading: false,
-                errorMessages: undefined,
+                errorMessages: { 'Error': 'Not found' },
                 movies: []
             });
+    });
+
+    test('Search: should update typed value   ', () => {
+        const props = { search: jest.fn() };
+        let wrapper = shallow(<Search {...props} />);
+
+        expect(wrapper.exists()).toBeTruthy();
+
+        wrapper.find('input').at(0).simulate('change', {
+            target: {
+                value: 'Superman'
+            }
+        });
+        expect(wrapper.find('input').at(0).prop('value')).toEqual('Superman');
     });
 
 });
