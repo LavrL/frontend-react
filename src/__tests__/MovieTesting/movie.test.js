@@ -104,7 +104,7 @@ describe('Movie testing', () => {
             });
     });
 
-    test('Search: should update typed value   ', () => {
+    test('Search: should update typed value', () => {
         const props = { search: jest.fn() };
         let wrapper = shallow(<Search {...props} />);
 
@@ -116,6 +116,14 @@ describe('Movie testing', () => {
             }
         });
         expect(wrapper.find('input').at(0).prop('value')).toEqual('Superman');
+    });
+
+    test('Search: should Search button work', () => {
+        const props = { search: jest.fn() };
+        let wrapper = shallow(<Search {...props} />);
+
+        wrapper.find('input').at(1).simulate('click', { preventDefault: () => { } });
+        expect(wrapper.find('input').at(0).prop('value')).toEqual('');
     });
 
 });
