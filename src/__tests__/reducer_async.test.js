@@ -19,12 +19,13 @@ describe('Test thunk action creator', () => {
 
         // Mock the fetch() global to always return the same value for GET
         // requests to all URLs.
-        fetchMock.get('*', {response: 200})
-
+        fetchMock.get('*', { response: 200 });
+        
         return store.dispatch(getCurrenciesList())
             .then(() => {
                 const actualActions = store.getActions().map(action => action.type);
                 expect(actualActions).toEqual(expectedActions);
+                //fetchMock.reset();
             });
     })
 
@@ -45,6 +46,6 @@ describe('Test thunk action creator', () => {
                 const actualActions = store.getActions().map(action => action.type)
                 expect(actualActions).toEqual(expectedActions);
             })
-            
+
     })
 })

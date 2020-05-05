@@ -49,6 +49,7 @@ const Movies = () => {
                     payload: jsonResponse.Search
                 })
             })
+            .catch(err => console.log(err))
     }, []);
 
     const search = searchValue => {
@@ -70,7 +71,8 @@ const Movies = () => {
                         payload: jsonResponse.Error
                     })
                 }
-            });
+            })
+            .catch(err => console.log(err));
     };
 
     const { movies, errorMessages, loading } = state;

@@ -37,7 +37,6 @@ export function getCurrenciesList() {
             dispatch(setCurrencies(currencyAr));
         }
         catch (err) {
-            //console.log('Error = ', err);
             dispatch(setCurrenciesError(err));
         }
     }

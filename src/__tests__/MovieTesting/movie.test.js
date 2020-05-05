@@ -3,7 +3,6 @@ import Adapter from 'enzyme-adapter-react-16';
 import Movies from '../../components/Movies/Movies';
 import { reducer } from '../../components/Movies/Movies';
 import Movie from '../../components/Movies/Movie/Movie';
-//import Search from '../../components/Movies/Search/Search';
 import renderer from 'react-test-renderer';
 import { mount, configure, shallow } from 'enzyme';
 import fetchMock from 'jest-fetch-mock';
@@ -26,7 +25,7 @@ describe('Movie testing', () => {
     };
 
     beforeAll(() => {
-        wrapper = mount(<Movies />);
+        wrapper = shallow(<Movies />);
         fetchMock.resetMocks();
     });
 

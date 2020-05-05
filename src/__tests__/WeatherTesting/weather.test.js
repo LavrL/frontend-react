@@ -8,7 +8,6 @@ import { REACT_APP_WEATHER_APPID } from '../../utils/constants';
 import { fetchData } from '../../utils/fetchData';
 import { api } from '../../utils/api';
 import fetchMock from 'jest-fetch-mock';
-//import InputComponent from '../../components/InputComponent/InputComponent';
 
 jest.mock('axios');
 

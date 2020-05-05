@@ -10,5 +10,5 @@ describe('reducerAuth testing', () => {
                 loginError: null
             }
         )
-    })
+    });
 });

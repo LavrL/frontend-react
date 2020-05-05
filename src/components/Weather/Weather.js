@@ -48,8 +48,7 @@ class Weather extends Component {
                     showError: false
                 })
             })
-            .catch(err => {
-                console.log('Error = ', err);
+            .catch(() => {
                 this.setState({
                     showWeather: false,
                     showError: true
