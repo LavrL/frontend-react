@@ -1,5 +1,3 @@
-// import { handleErrors, make_base_auth } from '../utils/loginFunctions';
-// import { history } from '../components/App/App';
 import {
     SET_LOGIN_PENDING,
     SET_LOGIN_SUCCESS,
