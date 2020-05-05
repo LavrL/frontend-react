@@ -26,20 +26,20 @@ export function updateCurBase(currency) {
 }
 
 export function getCurrenciesList() {
-    return dispatch => {
-        return fetch(CURRENCY_CONVERTER_URL_API)
-            .then((res) => { return res.json() })
-            .then((result) => {
-                const currencyAr = ["EUR"];
-                for (let key in result.rates) {
-                    currencyAr.push(key);
-                }
-                dispatch(setCurrencies(currencyAr))
-            })
-            .catch((err) => {
-                console.log('Error = ', err);
-                dispatch(setCurrenciesError(err))
-            })
+    return async dispatch => {
+        try {
+            const res = await fetch(CURRENCY_CONVERTER_URL_API);
+            const result = await res.json();
+            const currencyAr = ["EUR"];
+            for (let key in result.rates) {
+                currencyAr.push(key);
+            }
+            dispatch(setCurrencies(currencyAr));
+        }
+        catch (err) {
+            //console.log('Error = ', err);
+            dispatch(setCurrenciesError(err));
+        }
     }
 }
 

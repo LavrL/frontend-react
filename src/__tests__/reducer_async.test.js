@@ -38,12 +38,13 @@ describe('Test thunk action creator', () => {
         ]
         // Mock the fetch() global to always return the same value for GET
         // requests to all URLs.
-        fetchMock.mock('https://api.exchangeratesapi.io/latest', 404)
+        fetchMock.mock('https://api.exchangeratesapi.io/latest', 404);
 
         return store.dispatch(getCurrenciesList())
             .then(() => {
                 const actualActions = store.getActions().map(action => action.type)
                 expect(actualActions).toEqual(expectedActions);
             })
+            
     })
 })
