@@ -2,6 +2,7 @@ import AppHeader from './AppHeader/AppHeader';
 import ItemAddForm from './ItemAddForm/ItemAddForm';
 import React, { Component } from 'react';
 import TodoList from './TodoList/TodoList';
+
 import './PropertiesPage.css';
 
 class PropertiesPage extends Component {
@@ -11,22 +12,22 @@ class PropertiesPage extends Component {
         this.genId = 50;
         this.prCB = this.prCB.bind(this);
         this.state = {
-        returnedValue: '',
-        items: [
-            {
-                id: 1,
-                label: 'Brīvības 132',
-                editBtnName: 'EDIT',
-                inputClassName: 'textFieldHide',
-                labelClassName: 'labelShow'
-            },
-            {
-                id: 2,
-                label: 'Matīsa 74',
-                editBtnName: 'EDIT',
-                inputClassName: 'textFieldHide',
-                labelClassName: 'labelShow'
-            }]
+            returnedValue: '',
+            items: [
+                {
+                    id: 1,
+                    label: 'Brīvības 132',
+                    editBtnName: 'EDIT',
+                    inputClassName: 'textFieldHide',
+                    labelClassName: 'labelShow'
+                },
+                {
+                    id: 2,
+                    label: 'Matīsa 74',
+                    editBtnName: 'EDIT',
+                    inputClassName: 'textFieldHide',
+                    labelClassName: 'labelShow'
+                }]
         }
     }
 

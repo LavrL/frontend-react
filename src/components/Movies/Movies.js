@@ -2,8 +2,8 @@ import Header from "./Header/Header";
 import Movie from "./Movie/Movie";
 import React, { useEffect, useReducer } from 'react';
 import Search from "./Search/Search";
-
 import { MOVIE_API } from '../../utils/constants.js';
+
 import './Movies.css';
 
 const initialState = {

@@ -1,6 +1,6 @@
+import InputComponent from '../InputComponent/InputComponent';
 import React, { Component } from 'react';
 import { REACT_APP_WEATHER_APPID } from '../../utils/constants';
-import InputComponent from '../InputComponent/InputComponent';
 
 import './Weather.css';
 

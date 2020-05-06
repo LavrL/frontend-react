@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Weather testing Weather component renders correctly 1`] = `
+exports[`Weather testing should check if Weather component renders correctly 1`] = `
 <div
   className="weather-block__center"
 >

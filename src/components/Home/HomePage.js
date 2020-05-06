@@ -9,6 +9,7 @@ class Homepage extends React.Component {
                 <ul>
                     <li>Redux</li>
                     <li>React Hooks</li>    
+                    <li>Tests</li>    
                 </ul>
                 and bundled with Webpack.
                 <p>Hope you enjoy it!</p>

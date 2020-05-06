@@ -1,20 +1,18 @@
-import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
-import Movies from '../../components/Movies/Movies';
-import { reducer } from '../../components/Movies/Movies';
 import Movie from '../../components/Movies/Movie/Movie';
-import renderer from 'react-test-renderer';
-import { mount, configure, shallow } from 'enzyme';
-import fetchMock from 'jest-fetch-mock';
-import { DEFAULT_IMAGE } from '../../utils/constants';
+import Movies from '../../components/Movies/Movies';
+import React from 'react';
 import Search from '../../components/Movies/Search/Search';
+import fetchMock from 'jest-fetch-mock';
+import renderer from 'react-test-renderer';
+import { DEFAULT_IMAGE } from '../../utils/constants';
+import { mount, configure, shallow } from 'enzyme';
+import { reducer } from '../../components/Movies/Movies';
 
 jest.mock('axios');
-
 configure({ adapter: new Adapter() });
 
 describe('Movie testing', () => {
-
     let wrapper;
     let action;
 
@@ -33,14 +31,15 @@ describe('Movie testing', () => {
         wrapper.unmount();
     });
 
-    test('Movie component renders correctly', () => {
+    test('should check if Movie component renders correctly', () => {
         const tree = renderer
             .create(<Movies />)
             .toJSON();
+
         expect(tree).toMatchSnapshot();
     });
 
-    test('testing Movie component parameters', () => {
+    test('should test Movie component parameters', () => {
         const props = {
             movie: {
                 Poster: 'Superman',
@@ -53,20 +52,21 @@ describe('Movie testing', () => {
         expect(movieComponent.find('h2').text()).toEqual('Superman returns');
     });
 
-    test('testing default Poster Movie parameter', () => {
+    test('should test default Poster Movie parameter', () => {
         const movie = {
             Poster: 'N/A'
         };
         let movieComponent = mount(<Movie movie={movie} />);
+
         expect(movieComponent.find('img').prop('src')).toEqual(DEFAULT_IMAGE);
     });
 
-    test('reducer testing: SEARCH_MOVIES_REQUEST', () => {
-
+    test('should test reducer action.type: SEARCH_MOVIES_REQUEST', () => {
         let state;
-        expect(reducer(state, {})).toEqual(initialState)
 
+        expect(reducer(state, {})).toEqual(initialState)
         action = { type: "SEARCH_MOVIES_REQUEST" };
+
         expect(reducer(initialState, action))
             .toEqual({
                 loading: true,
@@ -75,11 +75,12 @@ describe('Movie testing', () => {
             });
     });
 
-    test('reducer testing: SEARCH_MOVIES_SUCCESS', () => {
+    test('should test reducer action.type: SEARCH_MOVIES_SUCCESS', () => {
         action = {
             type: "SEARCH_MOVIES_SUCCESS",
             payload: [{ 'Poster': "Superman", 'Title': "Superman returns" }]
         };
+
         expect(reducer(initialState, action))
             .toEqual({
                 loading: false,
@@ -90,11 +91,12 @@ describe('Movie testing', () => {
             });
     });
 
-    test('reducer testing: SEARCH_MOVIES_FAILURE', () => {
+    test('should test reducer action.type: SEARCH_MOVIES_FAILURE', () => {
         action = {
             type: "SEARCH_MOVIES_FAILURE",
             payload: { 'Error': 'Not found' }
         };
+
         expect(reducer(initialState, action))
             .toEqual({
                 loading: false,
@@ -103,7 +105,7 @@ describe('Movie testing', () => {
             });
     });
 
-    test('Search: should update typed value', () => {
+    test('should test Search component: update typed value', () => {
         const props = { search: jest.fn() };
         let wrapper = shallow(<Search {...props} />);
 
@@ -114,10 +116,11 @@ describe('Movie testing', () => {
                 value: 'Superman'
             }
         });
+
         expect(wrapper.find('input').at(0).prop('value')).toEqual('Superman');
     });
 
-    test('Search: should Search button work', () => {
+    test('should test Search component: check if Search button works', () => {
         const props = { search: jest.fn() };
         let wrapper = shallow(<Search {...props} />);
 

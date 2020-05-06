@@ -1,7 +1,6 @@
 import React from 'react';
 import { DEFAULT_IMAGE } from '../../../utils/constants';
 
-
 const Movie = ({ movie }) => {
     const poster = movie.Poster === 'N/A' ? DEFAULT_IMAGE : movie.Poster
     return (

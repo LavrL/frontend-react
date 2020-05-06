@@ -7,7 +7,8 @@ import {
 } from '../actions/actionCalcCurr';
 
 
-describe('reducer testing', () => {
+describe('Reducer testing', () => {
+
     it('should return initial state', () => {
         expect(reducer(undefined, {})).toEqual(
             {
@@ -16,9 +17,8 @@ describe('reducer testing', () => {
                 currencyList: [],
                 currencyAmount: 1,
                 finalResult: 0
-            }
-        )
-    })
+            });
+    });
 });
 
 describe('Base currency action test', () => {
@@ -27,7 +27,7 @@ describe('Base currency action test', () => {
         store.dispatch(updateCurrencyBase("EUR"));
     });
 
-    it('base currency changing', () => {
+    it('should return Base currency changing', () => {
         const state = store.getState();
         expect(state.reducerCalcCurr.currencyBase).toBe('EUR');
     });
@@ -38,7 +38,7 @@ describe('Target currency action test', () => {
         store.dispatch(updateCurrencyTarget("USD"));
     });
 
-    it('target currency changing', () => {
+    it('should return Target currency changing', () => {
         const state = store.getState();
         expect(state.reducerCalcCurr.currencyTo).toBe('USD');
     });
@@ -49,7 +49,7 @@ describe('Amount currency action test', () => {
         store.dispatch(updateCurrencyAmount(123));
     });
 
-    it('Amount currency changing', () => {
+    it('should return Amount currency changing', () => {
         const state = store.getState();
         expect(state.reducerCalcCurr.currencyAmount).toBe(123);
     });

@@ -9,7 +9,7 @@ export const history = createBrowserHistory();
 class App extends Component {
   constructor(props) {
     super(props);
-    console.log('creating ...');
+    console.log('Creating ...');
   }
 
   render() {

@@ -5,9 +5,8 @@ describe('actions', () => {
         const result = 123;
         const expectedAction = {
             type: 'CALCULATE_TOTAL_AMOUNT',
-            result
+            result: 123
         }
-        expect(actions.calculateResult(result)).toEqual(expectedAction)
-    })
-})
-
+        expect(actions.calculateResult(result)).toEqual(expectedAction);
+    });
+});

@@ -7,7 +7,7 @@ describe('Button', () => {
         const component = renderer.create(<Button className={"btn"}
             onClick={"onClick"}>{"Save"}</Button>);
         let tree = component.toJSON();
+        
         expect(tree).toMatchSnapshot();
     });
-    
 })

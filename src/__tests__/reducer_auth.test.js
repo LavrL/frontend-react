@@ -14,8 +14,7 @@ describe('reducerAuth testing', () => {
                 isLoginSuccess: false,
                 isLoginPending: false,
                 loginError: null
-            }
-        )
+            });
     });
 
     test('should return SET_LOGIN_PENDING', () => {

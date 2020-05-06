@@ -21,6 +21,7 @@ npm i
 npm run start
 
 npm run test
+npm run test_stat
 ```
 
 ## Used:
